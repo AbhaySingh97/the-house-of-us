@@ -5,106 +5,106 @@ import { Candle } from '../furniture/Candle';
 export const SecretLibrary: React.FC = () => {
   return (
     <group position={[14.5, 0, -10.5]}>
-      {/* --- FLOOR (Polished mahogany parquet) --- */}
+      {/* --- FLOOR (Polished warm mahogany parquet) --- */}
       <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[10.0, 10.0]} />
-        <meshStandardMaterial color="#2b150c" roughness={0.5} metalness={0.12} />
+        <meshStandardMaterial color="#73462b" roughness={0.45} metalness={0.1} />
       </mesh>
 
       {/* Deep Emerald Velvet Persian Rug with Gold Filigree Border */}
       <group position={[0, 0.005, 0]}>
         <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[6.0, 6.0]} />
-          <meshStandardMaterial color="#143320" roughness={0.8} />
+          <meshStandardMaterial color="#1a4d31" roughness={0.75} />
         </mesh>
         <mesh position={[0, 0.001, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <circleGeometry args={[1.3, 24]} />
-          <meshStandardMaterial color="#1a422a" roughness={0.85} />
+          <meshStandardMaterial color="#22613e" roughness={0.8} />
         </mesh>
       </group>
 
       {/* --- COFFERED LIBRARY CEILING --- */}
       <mesh position={[0, 3.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <planeGeometry args={[10.0, 10.0]} />
-        <meshStandardMaterial color="#f2eae1" roughness={0.9} />
+        <meshStandardMaterial color="#fffdfa" roughness={0.9} />
       </mesh>
       {/* Wooden cross beams */}
       {[-2.5, 0, 2.5].map((bx) => (
         <mesh key={`lbx_${bx}`} position={[bx, 3.14, 0]}>
           <boxGeometry args={[0.18, 0.12, 10.0]} />
-          <meshStandardMaterial color="#241108" roughness={0.7} />
+          <meshStandardMaterial color="#54301a" roughness={0.65} />
         </mesh>
       ))}
       {[-2.5, 0, 2.5].map((bz) => (
         <mesh key={`lbz_${bz}`} position={[0, 3.14, bz]}>
           <boxGeometry args={[10.0, 0.12, 0.18]} />
-          <meshStandardMaterial color="#241108" roughness={0.7} />
+          <meshStandardMaterial color="#54301a" roughness={0.65} />
         </mesh>
       ))}
 
-      {/* --- WALLS (Parchment White Plaster with Dark Emerald Wainscoting) --- */}
+      {/* --- WALLS (Warm Ivory Plaster with Rich Emerald Wainscoting) --- */}
       {/* West Wall (Entrance from Corridor 2 at Z: [-0.8, 0.8]) */}
       <mesh position={[-5.0, 1.6, 2.9]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[4.2, 3.2]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[-4.98, 0.55, 2.9]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[4.2, 1.1]} />
-        <meshStandardMaterial color="#122b1c" roughness={0.7} />
+        <meshStandardMaterial color="#1c5232" roughness={0.6} />
       </mesh>
       <mesh position={[-5.0, 1.6, -2.9]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[4.2, 3.2]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[-4.98, 0.55, -2.9]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[4.2, 1.1]} />
-        <meshStandardMaterial color="#122b1c" roughness={0.7} />
+        <meshStandardMaterial color="#1c5232" roughness={0.6} />
       </mesh>
       <mesh position={[-5.0, 2.9, 0]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[1.6, 0.6]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
 
       {/* South Wall (Solid wall with bookshelves) */}
       <mesh position={[0, 1.6, 5.0]} rotation={[0, Math.PI, 0]} receiveShadow>
         <planeGeometry args={[10.0, 3.2]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[0, 0.55, 4.98]} rotation={[0, Math.PI, 0]}>
         <planeGeometry args={[10.0, 1.1]} />
-        <meshStandardMaterial color="#122b1c" roughness={0.7} />
+        <meshStandardMaterial color="#1c5232" roughness={0.6} />
       </mesh>
 
       {/* East Wall */}
       <mesh position={[5.0, 1.6, 0]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[10.0, 3.2]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[4.98, 0.55, 0]} rotation={[0, -Math.PI / 2, 0]}>
         <planeGeometry args={[10.0, 1.1]} />
-        <meshStandardMaterial color="#122b1c" roughness={0.7} />
+        <meshStandardMaterial color="#1c5232" roughness={0.6} />
       </mesh>
 
       {/* North Wall (Exit to Corridor 3 at X: [-0.8, 0.8]) */}
       <mesh position={[-2.9, 1.6, -5.0]} receiveShadow>
         <planeGeometry args={[4.2, 3.2]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[-2.9, 0.55, -4.98]}>
         <planeGeometry args={[4.2, 1.1]} />
-        <meshStandardMaterial color="#122b1c" roughness={0.7} />
+        <meshStandardMaterial color="#1c5232" roughness={0.6} />
       </mesh>
       <mesh position={[2.9, 1.6, -5.0]} receiveShadow>
         <planeGeometry args={[4.2, 3.2]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[2.9, 0.55, -4.98]}>
         <planeGeometry args={[4.2, 1.1]} />
-        <meshStandardMaterial color="#122b1c" roughness={0.7} />
+        <meshStandardMaterial color="#1c5232" roughness={0.6} />
       </mesh>
       <mesh position={[0, 2.9, -5.0]} receiveShadow>
         <planeGeometry args={[1.6, 0.6]} />
-        <meshStandardMaterial color="#d4c9bd" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
 
       {/* Central Scholar Desk with Bookcases & Combination Compartment */}
@@ -183,7 +183,7 @@ export const SecretLibrary: React.FC = () => {
 
       {/* Central Brass Chandelier */}
       <group position={[0, 2.7, 0]}>
-        <pointLight color="#ffe4b5" intensity={2.2} distance={9.0} decay={2} castShadow />
+        <pointLight color="#ffe8ba" intensity={2.6} distance={14.0} decay={1.3} />
       </group>
     </group>
   );

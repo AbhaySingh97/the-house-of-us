@@ -86,17 +86,17 @@ export const MemoryDesk: React.FC<{ position: [number, number, number] }> = ({ p
       {/* Desktop */}
       <mesh position={[0, 0.82, 0]} castShadow receiveShadow>
         <boxGeometry args={[1.8, 0.08, 0.85]} />
-        <meshStandardMaterial color="#351a13" roughness={0.5} />
+        <meshStandardMaterial color="#4d271a" roughness={0.45} />
       </mesh>
       {/* Left drawer pedestal */}
       <mesh position={[-0.65, 0.4, 0]} castShadow receiveShadow>
         <boxGeometry args={[0.42, 0.78, 0.78]} />
-        <meshStandardMaterial color="#2c140e" roughness={0.6} />
+        <meshStandardMaterial color="#3e1d13" roughness={0.55} />
       </mesh>
       {/* Right drawer pedestal */}
       <mesh position={[0.65, 0.4, 0]} castShadow receiveShadow>
         <boxGeometry args={[0.42, 0.78, 0.78]} />
-        <meshStandardMaterial color="#2c140e" roughness={0.6} />
+        <meshStandardMaterial color="#3e1d13" roughness={0.55} />
       </mesh>
       {/* Drawer brass knobs */}
       {[-0.65, 0.65].map((x, i) => (
@@ -112,50 +112,61 @@ export const MemoryDesk: React.FC<{ position: [number, number, number] }> = ({ p
         </group>
       ))}
 
-      {/* Desk Lamp (Green Banker's Lamp / Brass) */}
+      {/* Desk Lamp (Green Banker's Lamp / Brass) - Optimized lighting */}
       <group position={[-0.7, 0.86, -0.2]}>
         <mesh position={[0, 0.02, 0]} castShadow>
           <boxGeometry args={[0.16, 0.04, 0.16]} />
-          <meshStandardMaterial color="#b38f29" metalness={0.8} roughness={0.3} />
+          <meshStandardMaterial color="#c59b27" metalness={0.85} roughness={0.25} />
         </mesh>
         <mesh position={[0, 0.22, 0]} castShadow>
           <cylinderGeometry args={[0.015, 0.015, 0.38, 12]} />
-          <meshStandardMaterial color="#b38f29" metalness={0.8} roughness={0.3} />
+          <meshStandardMaterial color="#c59b27" metalness={0.85} roughness={0.25} />
         </mesh>
         {/* Emerald glass curved shade */}
         <mesh position={[0, 0.38, 0]} rotation={[0, 0, 0]} castShadow>
           <cylinderGeometry args={[0.08, 0.08, 0.22, 16, 1, false, 0, Math.PI]} />
-          <meshStandardMaterial color="#1a5a3a" roughness={0.2} metalness={0.1} />
+          <meshStandardMaterial color="#1a6340" roughness={0.2} metalness={0.1} />
         </mesh>
-        <pointLight position={[0, 0.35, 0]} color="#ffe8aa" intensity={2.4} distance={4.5} decay={2} castShadow />
+        <pointLight position={[0, 0.35, 0]} color="#ffe8aa" intensity={2.6} distance={6.5} decay={1.3} />
       </group>
 
-      {/* Chapter I Letter on Desk */}
+      {/* Chapter I Letter on Desk (Folded 3D Parchment with Red Wax Seal) */}
       <group position={[-0.28, 0.87, 0.1]} rotation={[-Math.PI / 2, 0, -0.05]}>
         <mesh castShadow receiveShadow>
-          <planeGeometry args={[0.34, 0.26]} />
-          <meshStandardMaterial color="#fcf5e5" roughness={0.85} />
+          <boxGeometry args={[0.34, 0.26, 0.012]} />
+          <meshStandardMaterial color="#fdf8ec" roughness={0.7} />
         </mesh>
-        {/* Faux handwriting ink */}
+        {/* Handwriting ink */}
         {[-0.08, -0.04, 0.0, 0.04, 0.08].map((y, idx) => (
-          <mesh key={idx} position={[0, y, 0.001]}>
+          <mesh key={idx} position={[0, y, 0.008]}>
             <planeGeometry args={[0.26 - (idx % 2) * 0.05, 0.005]} />
             <meshBasicMaterial color="#351a13" />
           </mesh>
         ))}
-        {/* Soft interactive ring */}
-        <mesh position={[0, 0, 0.002]}>
-          <ringGeometry args={[0.18, 0.2, 24]} />
-          <meshBasicMaterial color="#ffc566" transparent opacity={0.35} />
+        {/* Red Wax Seal */}
+        <group position={[0.1, -0.08, 0.012]}>
+          <mesh castShadow>
+            <cylinderGeometry args={[0.032, 0.035, 0.01, 16]} />
+            <meshStandardMaterial color="#9e1828" roughness={0.4} metalness={0.1} />
+          </mesh>
+          <mesh position={[0, 0.006, 0]}>
+            <torusGeometry args={[0.024, 0.004, 8, 16]} />
+            <meshStandardMaterial color="#7a0e1c" roughness={0.5} />
+          </mesh>
+        </group>
+        {/* Interactive glowing ring */}
+        <mesh position={[0, 0, 0.009]}>
+          <ringGeometry args={[0.19, 0.22, 32]} />
+          <meshBasicMaterial color="#ffc566" transparent opacity={0.4} />
         </mesh>
       </group>
 
       {/* The Velvet Keepsake Box */}
       <group position={[0.35, 0.86, 0.05]}>
-        {/* Box Base (Crimson Velvet & Dark Walnut) */}
+        {/* Box Base (Crimson Velvet & Warm Walnut) */}
         <mesh position={[0, 0.06, 0]} castShadow receiveShadow>
           <boxGeometry args={[0.36, 0.12, 0.26]} />
-          <meshStandardMaterial color="#5e151e" roughness={0.7} />
+          <meshStandardMaterial color="#7a1827" roughness={0.7} />
         </mesh>
         {/* Brass corner brackets */}
         {[-0.17, 0.17].map((bx) =>
@@ -171,7 +182,7 @@ export const MemoryDesk: React.FC<{ position: [number, number, number] }> = ({ p
         <group position={[0, 0.12, -0.12]} rotation={[flags.memoryPuzzleSolved ? -Math.PI * 0.6 : 0, 0, 0]}>
           <mesh position={[0, 0.02, 0.12]} castShadow>
             <boxGeometry args={[0.37, 0.04, 0.27]} />
-            <meshStandardMaterial color="#4a0e16" roughness={0.6} />
+            <meshStandardMaterial color="#63111f" roughness={0.6} />
           </mesh>
           {/* Top Brass Filigree Emblem */}
           <mesh position={[0, 0.042, 0.12]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -183,55 +194,86 @@ export const MemoryDesk: React.FC<{ position: [number, number, number] }> = ({ p
         {/* Revealed Silver Heart Key (visible when opened) */}
         {flags.memoryPuzzleSolved && (
           <group position={[0, 0.1, 0]} rotation={[-Math.PI / 2, 0, 0.3]}>
+            {/* Heart Bow */}
             <mesh castShadow>
-              <torusGeometry args={[0.035, 0.008, 8, 16]} />
-              <meshStandardMaterial color="#e0e8f0" metalness={0.95} roughness={0.15} />
+              <torusGeometry args={[0.04, 0.009, 12, 24]} />
+              <meshStandardMaterial color="#f0f6ff" metalness={0.98} roughness={0.1} />
             </mesh>
-            <mesh position={[0, -0.06, 0]} castShadow>
-              <cylinderGeometry args={[0.007, 0.007, 0.09, 8]} />
-              <meshStandardMaterial color="#e0e8f0" metalness={0.95} roughness={0.15} />
+            <mesh position={[0, -0.015, 0]}>
+              <torusGeometry args={[0.02, 0.005, 8, 16]} />
+              <meshStandardMaterial color="#f0f6ff" metalness={0.98} roughness={0.1} />
             </mesh>
-            <pointLight color="#c2e0ff" intensity={0.9} distance={1.2} />
+            <mesh position={[0, -0.07, 0]} castShadow>
+              <cylinderGeometry args={[0.008, 0.008, 0.1, 8]} />
+              <meshStandardMaterial color="#f0f6ff" metalness={0.98} roughness={0.1} />
+            </mesh>
+            <mesh position={[0.016, -0.1, 0]} castShadow>
+              <boxGeometry args={[0.024, 0.022, 0.008]} />
+              <meshStandardMaterial color="#f0f6ff" metalness={0.98} roughness={0.1} />
+            </mesh>
+            <pointLight color="#d9ebff" intensity={1.2} distance={2.0} decay={1.3} />
           </group>
         )}
       </group>
 
       {/* 3 Interactive Keepsake Props displayed on desk */}
-      {/* 1. Brass Hourglass */}
+      {/* 1. Antique Brass Hourglass */}
       <group position={[0.65, 0.86, -0.22]}>
-        {/* Top/bottom plates */}
+        {/* Top/bottom brass plates */}
         <mesh position={[0, 0.01, 0]}>
           <cylinderGeometry args={[0.05, 0.05, 0.02, 16]} />
-          <meshStandardMaterial color="#c59b27" metalness={0.85} roughness={0.3} />
+          <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.2} />
         </mesh>
         <mesh position={[0, 0.15, 0]}>
           <cylinderGeometry args={[0.05, 0.05, 0.02, 16]} />
-          <meshStandardMaterial color="#c59b27" metalness={0.85} roughness={0.3} />
+          <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.2} />
         </mesh>
-        {/* Glass bulbs */}
+        {/* 3 Brass Support Pillars */}
+        {[-0.038, 0.038].map((px, pi) => (
+          <mesh key={pi} position={[px, 0.08, 0]}>
+            <cylinderGeometry args={[0.004, 0.004, 0.14, 8]} />
+            <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.2} />
+          </mesh>
+        ))}
+        {/* Glass bulbs with golden sand */}
         <mesh position={[0, 0.08, 0]}>
-          <sphereGeometry args={[0.035, 12, 12]} />
-          <meshStandardMaterial color="#ffffff" roughness={0.1} transparent opacity={0.6} />
+          <sphereGeometry args={[0.035, 14, 14]} />
+          <meshStandardMaterial color="#ffffff" roughness={0.1} transparent opacity={0.55} />
+        </mesh>
+        <mesh position={[0, 0.05, 0]}>
+          <sphereGeometry args={[0.022, 8, 8]} />
+          <meshStandardMaterial color="#e5b842" roughness={0.8} />
         </mesh>
       </group>
 
-      {/* 2. Rose Quartz Crystal */}
+      {/* 2. Faceted Rose Quartz Crystal */}
       <group position={[0.42, 0.87, -0.24]}>
         <mesh castShadow>
-          <octahedronGeometry args={[0.045, 0]} />
-          <meshStandardMaterial color="#f7a8b8" roughness={0.3} metalness={0.1} />
+          <octahedronGeometry args={[0.05, 0]} />
+          <meshStandardMaterial 
+            color="#ff9eb5" 
+            emissive="#ff5c8a"
+            emissiveIntensity={0.3}
+            roughness={0.2} 
+            metalness={0.1} 
+          />
         </mesh>
-        <pointLight color="#ff88a3" intensity={0.4} distance={0.8} />
+        <pointLight color="#ff88a3" intensity={0.6} distance={1.2} decay={1.3} />
       </group>
 
       {/* 3. Enamelled Music Box */}
       <group position={[0.15, 0.87, -0.22]}>
         <mesh castShadow>
-          <boxGeometry args={[0.1, 0.06, 0.08]} />
-          <meshStandardMaterial color="#2d4566" roughness={0.4} metalness={0.4} />
+          <boxGeometry args={[0.11, 0.065, 0.085]} />
+          <meshStandardMaterial color="#1a3b5c" roughness={0.35} metalness={0.3} />
+        </mesh>
+        {/* Gold lid frame */}
+        <mesh position={[0, 0.034, 0]}>
+          <boxGeometry args={[0.115, 0.008, 0.09]} />
+          <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.2} />
         </mesh>
         {/* Brass winding key */}
-        <mesh position={[-0.06, 0.02, 0]}>
+        <mesh position={[-0.065, 0.02, 0]}>
           <cylinderGeometry args={[0.008, 0.008, 0.03, 8]} />
           <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.2} />
         </mesh>

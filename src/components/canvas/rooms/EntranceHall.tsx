@@ -5,76 +5,76 @@ import { Candle } from '../furniture/Candle';
 export const EntranceHall: React.FC = () => {
   return (
     <group position={[0, 0, 0]}>
-      {/* --- FLOOR (Warm herringbone oak parquet) --- */}
+      {/* --- FLOOR (Warm golden oak parquet) --- */}
       <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[7.0, 7.0]} />
-        <meshStandardMaterial color="#422718" roughness={0.65} metalness={0.1} />
+        <meshStandardMaterial color="#8a5d3b" roughness={0.5} metalness={0.08} />
       </mesh>
 
       {/* Decorative Woven Persian Entry Rug with Gold Fringe */}
       <group position={[0, 0.005, 1.0]}>
         <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[2.4, 3.8]} />
-          <meshStandardMaterial color="#6e1a24" roughness={0.8} />
+          <meshStandardMaterial color="#801c29" roughness={0.75} />
         </mesh>
         {/* Fringes */}
         <mesh position={[0, 0.001, -1.92]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[2.4, 0.08]} />
-          <meshStandardMaterial color="#d4b26f" roughness={0.9} />
+          <meshStandardMaterial color="#e5c168" roughness={0.8} />
         </mesh>
         <mesh position={[0, 0.001, 1.92]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[2.4, 0.08]} />
-          <meshStandardMaterial color="#d4b26f" roughness={0.9} />
+          <meshStandardMaterial color="#e5c168" roughness={0.8} />
         </mesh>
       </group>
 
       {/* --- CEILING WITH CROWN MOLDING --- */}
       <mesh position={[0, 3.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <planeGeometry args={[7.0, 7.0]} />
-        <meshStandardMaterial color="#faf6f0" roughness={0.95} />
+        <meshStandardMaterial color="#fffdfa" roughness={0.9} />
       </mesh>
       {/* Ceiling Moldings */}
       <mesh position={[0, 3.16, 3.44]}>
         <boxGeometry args={[7.0, 0.08, 0.12]} />
-        <meshStandardMaterial color="#e8dfd5" roughness={0.8} />
+        <meshStandardMaterial color="#f5ece1" roughness={0.75} />
       </mesh>
       <mesh position={[-3.44, 3.16, 0]}>
         <boxGeometry args={[0.12, 0.08, 7.0]} />
-        <meshStandardMaterial color="#e8dfd5" roughness={0.8} />
+        <meshStandardMaterial color="#f5ece1" roughness={0.75} />
       </mesh>
       <mesh position={[3.44, 3.16, 0]}>
         <boxGeometry args={[0.12, 0.08, 7.0]} />
-        <meshStandardMaterial color="#e8dfd5" roughness={0.8} />
+        <meshStandardMaterial color="#f5ece1" roughness={0.75} />
       </mesh>
 
-      {/* --- WALLS (Soft Cream Plaster with Dark Walnut Wainscoting) --- */}
+      {/* --- WALLS (Warm Ivory Plaster with Golden Oak Wainscoting) --- */}
       {/* South Wall (Front door entrance) */}
       <mesh position={[0, 1.6, 3.5]} rotation={[0, Math.PI, 0]} receiveShadow>
         <planeGeometry args={[7.0, 3.2]} />
-        <meshStandardMaterial color="#e3d8cc" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       {/* South Wall Wainscoting */}
       <mesh position={[0, 0.55, 3.48]} rotation={[0, Math.PI, 0]}>
         <planeGeometry args={[7.0, 1.1]} />
-        <meshStandardMaterial color="#2d170e" roughness={0.65} />
+        <meshStandardMaterial color="#5e381f" roughness={0.55} />
       </mesh>
 
       {/* Grand Front Door (Arrival Portal) */}
       <group position={[0, 1.3, 3.47]} rotation={[0, Math.PI, 0]}>
         <mesh castShadow receiveShadow>
           <boxGeometry args={[1.8, 2.6, 0.08]} />
-          <meshStandardMaterial color="#26130b" roughness={0.55} />
+          <meshStandardMaterial color="#422617" roughness={0.55} />
         </mesh>
         {/* Carved Door Panels */}
         {[-0.45, 0.45].map((dx, i) => (
           <group key={i} position={[dx, 0, 0.045]}>
             <mesh position={[0, 0.55, 0]}>
               <boxGeometry args={[0.65, 0.95, 0.02]} />
-              <meshStandardMaterial color="#1f0e08" roughness={0.7} />
+              <meshStandardMaterial color="#351a0e" roughness={0.65} />
             </mesh>
             <mesh position={[0, -0.55, 0]}>
               <boxGeometry args={[0.65, 0.95, 0.02]} />
-              <meshStandardMaterial color="#1f0e08" roughness={0.7} />
+              <meshStandardMaterial color="#351a0e" roughness={0.65} />
             </mesh>
           </group>
         ))}
@@ -88,43 +88,43 @@ export const EntranceHall: React.FC = () => {
       {/* West Wall */}
       <mesh position={[-3.5, 1.6, 0]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[7.0, 3.2]} />
-        <meshStandardMaterial color="#e3d8cc" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[-3.48, 0.55, 0]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[7.0, 1.1]} />
-        <meshStandardMaterial color="#2d170e" roughness={0.65} />
+        <meshStandardMaterial color="#5e381f" roughness={0.55} />
       </mesh>
 
       {/* East Wall */}
       <mesh position={[3.5, 1.6, 0]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[7.0, 3.2]} />
-        <meshStandardMaterial color="#e3d8cc" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[3.48, 0.55, 0]} rotation={[0, -Math.PI / 2, 0]}>
         <planeGeometry args={[7.0, 1.1]} />
-        <meshStandardMaterial color="#2d170e" roughness={0.65} />
+        <meshStandardMaterial color="#5e381f" roughness={0.55} />
       </mesh>
 
       {/* North Wall (Opening to Corridor 1 at X: [-1.0, 1.0]) */}
       <mesh position={[-2.25, 1.6, -3.5]} receiveShadow>
         <planeGeometry args={[2.5, 3.2]} />
-        <meshStandardMaterial color="#e3d8cc" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[-2.25, 0.55, -3.48]}>
         <planeGeometry args={[2.5, 1.1]} />
-        <meshStandardMaterial color="#2d170e" roughness={0.65} />
+        <meshStandardMaterial color="#5e381f" roughness={0.55} />
       </mesh>
       <mesh position={[2.25, 1.6, -3.5]} receiveShadow>
         <planeGeometry args={[2.5, 3.2]} />
-        <meshStandardMaterial color="#e3d8cc" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
       <mesh position={[2.25, 0.55, -3.48]}>
         <planeGeometry args={[2.5, 1.1]} />
-        <meshStandardMaterial color="#2d170e" roughness={0.65} />
+        <meshStandardMaterial color="#5e381f" roughness={0.55} />
       </mesh>
       <mesh position={[0, 2.9, -3.5]} receiveShadow>
         <planeGeometry args={[2.0, 0.6]} />
-        <meshStandardMaterial color="#e3d8cc" roughness={0.85} />
+        <meshStandardMaterial color="#faf6f0" roughness={0.8} />
       </mesh>
 
       {/* Console Table on East Wall */}
@@ -197,7 +197,7 @@ export const EntranceHall: React.FC = () => {
             <meshStandardMaterial color="#ffffff" roughness={0.1} metalness={0.9} transparent opacity={0.7} />
           </mesh>
         ))}
-        <pointLight position={[0, -0.35, 0]} color="#ffe0b2" intensity={2.2} distance={7.5} decay={2} castShadow />
+        <pointLight position={[0, -0.35, 0]} color="#ffe4b8" intensity={2.6} distance={12} decay={1.3} />
       </group>
     </group>
   );

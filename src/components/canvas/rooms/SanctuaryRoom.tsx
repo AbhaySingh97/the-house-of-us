@@ -90,57 +90,57 @@ export const SanctuaryRoom: React.FC = () => {
         })}
       </group>
 
-      {/* --- WALLS (Champagne & Soft Blush Velvet Damask) --- */}
+      {/* --- WALLS (Radiant Champagne Cream & Warm Rose Velvet Wainscoting) --- */}
       {/* East Wall (Entrance from Corridor 4 at center Z: [-1.2, 1.2]) */}
       <mesh position={[6.5, 2.1, -3.9]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[5.2, 4.2]} />
-        <meshStandardMaterial color="#d9c7c2" roughness={0.7} />
+        <meshStandardMaterial color="#fff8f2" roughness={0.7} />
       </mesh>
       <mesh position={[6.48, 0.65, -3.9]} rotation={[0, -Math.PI / 2, 0]}>
         <planeGeometry args={[5.2, 1.3]} />
-        <meshStandardMaterial color="#661928" roughness={0.65} />
+        <meshStandardMaterial color="#7e1f32" roughness={0.6} />
       </mesh>
       <mesh position={[6.5, 2.1, 3.9]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[5.2, 4.2]} />
-        <meshStandardMaterial color="#d9c7c2" roughness={0.7} />
+        <meshStandardMaterial color="#fff8f2" roughness={0.7} />
       </mesh>
       <mesh position={[6.48, 0.65, 3.9]} rotation={[0, -Math.PI / 2, 0]}>
         <planeGeometry args={[5.2, 1.3]} />
-        <meshStandardMaterial color="#661928" roughness={0.65} />
+        <meshStandardMaterial color="#7e1f32" roughness={0.6} />
       </mesh>
       <mesh position={[6.5, 3.6, 0]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[2.6, 1.2]} />
-        <meshStandardMaterial color="#d9c7c2" roughness={0.7} />
+        <meshStandardMaterial color="#fff8f2" roughness={0.7} />
       </mesh>
 
       {/* West Wall */}
       <mesh position={[-6.5, 2.1, 0]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[13.0, 4.2]} />
-        <meshStandardMaterial color="#d9c7c2" roughness={0.7} />
+        <meshStandardMaterial color="#fff8f2" roughness={0.7} />
       </mesh>
       <mesh position={[-6.48, 0.65, 0]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[13.0, 1.3]} />
-        <meshStandardMaterial color="#661928" roughness={0.65} />
+        <meshStandardMaterial color="#7e1f32" roughness={0.6} />
       </mesh>
 
       {/* North Wall */}
       <mesh position={[0, 2.1, -6.5]} receiveShadow>
         <planeGeometry args={[13.0, 4.2]} />
-        <meshStandardMaterial color="#d9c7c2" roughness={0.7} />
+        <meshStandardMaterial color="#fff8f2" roughness={0.7} />
       </mesh>
       <mesh position={[0, 0.65, -6.48]}>
         <planeGeometry args={[13.0, 1.3]} />
-        <meshStandardMaterial color="#661928" roughness={0.65} />
+        <meshStandardMaterial color="#7e1f32" roughness={0.6} />
       </mesh>
 
       {/* South Wall */}
       <mesh position={[0, 2.1, 6.5]} rotation={[0, Math.PI, 0]} receiveShadow>
         <planeGeometry args={[13.0, 4.2]} />
-        <meshStandardMaterial color="#d9c7c2" roughness={0.7} />
+        <meshStandardMaterial color="#fff8f2" roughness={0.7} />
       </mesh>
       <mesh position={[0, 0.65, 6.48]} rotation={[0, Math.PI, 0]}>
         <planeGeometry args={[13.0, 1.3]} />
-        <meshStandardMaterial color="#661928" roughness={0.65} />
+        <meshStandardMaterial color="#7e1f32" roughness={0.6} />
       </mesh>
 
       {/* --- ORNATE MARBLE CANDELABRA COLUMNS IN CORNERS --- */}
@@ -181,15 +181,14 @@ export const SanctuaryRoom: React.FC = () => {
       {/* Central Marble Pedestal & Celestial Keepsake Chest */}
       <SanctuaryPedestal position={[0, 0, 0]} />
 
-      {/* Celestial Dome Chandelier Light */}
+      {/* Celestial Dome Chandelier Light - Radiant & Warm */}
       <group position={[0, 3.8, 0]}>
         <pointLight 
           ref={domeLightRef}
-          color={flags.finalPuzzleSolved ? "#ffd6e4" : "#ffe8d0"} 
-          intensity={2.4} 
-          distance={15} 
-          decay={2} 
-          castShadow 
+          color={flags.finalPuzzleSolved ? "#ffd6e6" : "#fff0d8"} 
+          intensity={3.0} 
+          distance={18} 
+          decay={1.2} 
         />
       </group>
     </group>

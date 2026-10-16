@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGameStore, gameStore } from '../../state/gameStore';
-import { Play, Volume2, VolumeX, RotateCcw, X, Smartphone } from 'lucide-react';
+import { Play, Volume2, VolumeX, RotateCcw, X, Smartphone, Sparkles } from 'lucide-react';
 
 export const PauseMenu: React.FC = () => {
   const { phase, settings } = useGameStore();
@@ -110,6 +110,39 @@ export const PauseMenu: React.FC = () => {
                 className="accent-[#d4af37] w-4 h-4 rounded"
               />
             </label>
+
+            {/* Graphics Performance Quality */}
+            <div className="pt-2 border-t border-[#3b2a24]/60">
+              <div className="flex justify-between text-xs text-[#d8c7b8] mb-1.5">
+                <span className="flex items-center gap-1.5">
+                  <Sparkles size={14} className="text-[#d4af37]" />
+                  Graphics Quality
+                </span>
+                <span className="uppercase font-mono text-[10px] text-[#d4af37]">
+                  {settings.quality}
+                </span>
+              </div>
+              <div className="grid grid-cols-3 gap-1.5">
+                {(['low', 'medium', 'high'] as const).map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => gameStore.updateSettings({ quality: q })}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                      settings.quality === q
+                        ? 'bg-[#d4af37] text-[#1c1412] shadow-md font-bold'
+                        : 'bg-[#2a1c18] hover:bg-[#382620] text-[#c9b5a5]'
+                    }`}
+                  >
+                    {q === 'low' ? 'Low' : q === 'medium' ? 'Medium' : 'High'}
+                  </button>
+                ))}
+              </div>
+              <div className="text-[10px] text-[#a89585] mt-1 text-center">
+                {settings.quality === 'low' && 'Optimized for smooth framerate on all devices (Shadows off).'}
+                {settings.quality === 'medium' && 'Balanced visuals and performance.'}
+                {settings.quality === 'high' && 'Full soft shadows, max dynamic range, and particles.'}
+              </div>
+            </div>
           </div>
         </div>
 

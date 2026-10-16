@@ -158,15 +158,14 @@ export const SanctuaryPedestal: React.FC<{ position: [number, number, number] }>
           </group>
         )}
 
-        {/* Chest Aura Point Light */}
+        {/* Chest Aura Point Light - Optimized without shadow passes */}
         <pointLight 
           ref={auraLightRef}
           position={[0, 0.35, 0.1]} 
           color={flags.chestOpen ? "#ff99bb" : "#ffcc77"} 
-          intensity={flags.chestOpen ? 4.5 : 1.8} 
-          distance={7.0} 
-          decay={2} 
-          castShadow 
+          intensity={flags.chestOpen ? 4.5 : 2.0} 
+          distance={8.0} 
+          decay={1.3} 
         />
       </group>
 

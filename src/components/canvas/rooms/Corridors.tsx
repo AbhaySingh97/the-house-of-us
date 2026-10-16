@@ -12,25 +12,25 @@ export const Corridors: React.FC = () => {
         {/* Floor */}
         <mesh position={[0, 0, -4.75]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[2.0, 2.5]} />
-          <meshStandardMaterial color="#4a2e1b" roughness={0.65} />
+          <meshStandardMaterial color="#825435" roughness={0.55} />
         </mesh>
         {/* Ceiling */}
         <mesh position={[0, 3.2, -4.75]} rotation={[Math.PI / 2, 0, 0]}>
           <planeGeometry args={[2.0, 2.5]} />
-          <meshStandardMaterial color="#f7f3ed" roughness={0.9} />
+          <meshStandardMaterial color="#fffdfa" roughness={0.9} />
         </mesh>
         {/* West Wall */}
         <mesh position={[-1.0, 1.6, -4.75]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
           <planeGeometry args={[2.5, 3.2]} />
-          <meshStandardMaterial color="#d9cec1" roughness={0.8} />
+          <meshStandardMaterial color="#faf6f0" roughness={0.8} />
         </mesh>
         {/* East Wall */}
         <mesh position={[1.0, 1.6, -4.75]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
           <planeGeometry args={[2.5, 3.2]} />
-          <meshStandardMaterial color="#d9cec1" roughness={0.8} />
+          <meshStandardMaterial color="#faf6f0" roughness={0.8} />
         </mesh>
         {/* Hallway Sconce */}
-        <pointLight position={[0, 2.4, -4.75]} color="#ffe0b2" intensity={1.2} distance={4} />
+        <pointLight position={[0, 2.4, -4.75]} color="#ffe4b8" intensity={1.8} distance={6} decay={1.3} />
 
         {/* DOOR 1: Door to Memory Room */}
         <Door 
@@ -51,30 +51,30 @@ export const Corridors: React.FC = () => {
         {/* Floor */}
         <mesh position={[7.0, 0, -10.5]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[5.0, 1.8]} />
-          <meshStandardMaterial color="#352014" roughness={0.65} />
+          <meshStandardMaterial color="#7a4e32" roughness={0.55} />
         </mesh>
         {/* Runner Rug */}
         <mesh position={[7.0, 0.005, -10.5]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[4.4, 1.1]} />
-          <meshStandardMaterial color="#551a24" roughness={0.85} />
+          <meshStandardMaterial color="#781827" roughness={0.75} />
         </mesh>
         {/* Ceiling */}
         <mesh position={[7.0, 3.2, -10.5]} rotation={[Math.PI / 2, 0, 0]}>
           <planeGeometry args={[5.0, 1.8]} />
-          <meshStandardMaterial color="#f0eae1" roughness={0.9} />
+          <meshStandardMaterial color="#fffdfa" roughness={0.9} />
         </mesh>
         {/* North Wall */}
         <mesh position={[7.0, 1.6, -11.4]} receiveShadow>
           <planeGeometry args={[5.0, 3.2]} />
-          <meshStandardMaterial color="#c2b6a7" roughness={0.8} />
+          <meshStandardMaterial color="#faf6f0" roughness={0.8} />
         </mesh>
         {/* South Wall */}
         <mesh position={[7.0, 1.6, -9.6]} rotation={[0, Math.PI, 0]} receiveShadow>
           <planeGeometry args={[5.0, 3.2]} />
-          <meshStandardMaterial color="#c2b6a7" roughness={0.8} />
+          <meshStandardMaterial color="#faf6f0" roughness={0.8} />
         </mesh>
         {/* Gallery Sconce */}
-        <pointLight position={[7.0, 2.4, -10.5]} color="#ffe0b2" intensity={1.4} distance={4.5} />
+        <pointLight position={[7.0, 2.4, -10.5]} color="#ffe4b8" intensity={1.8} distance={6.5} decay={1.3} />
 
         {/* DOOR 2: Door to Secret Library */}
         <Door 
@@ -95,25 +95,25 @@ export const Corridors: React.FC = () => {
         {/* Floor */}
         <mesh position={[14.5, 0, -17.5]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[1.8, 4.0]} />
-          <meshStandardMaterial color="#2d332a" roughness={0.85} />
+          <meshStandardMaterial color="#6e685c" roughness={0.7} />
         </mesh>
         {/* Ceiling */}
         <mesh position={[14.5, 3.2, -17.5]} rotation={[Math.PI / 2, 0, 0]}>
           <planeGeometry args={[1.8, 4.0]} />
-          <meshStandardMaterial color="#e8dfd5" roughness={0.9} />
+          <meshStandardMaterial color="#fffdfa" roughness={0.9} />
         </mesh>
         {/* West Wall */}
         <mesh position={[13.6, 1.6, -17.5]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
           <planeGeometry args={[4.0, 3.2]} />
-          <meshStandardMaterial color="#353f33" roughness={0.85} />
+          <meshStandardMaterial color="#495745" roughness={0.8} />
         </mesh>
         {/* East Wall */}
         <mesh position={[15.4, 1.6, -17.5]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
           <planeGeometry args={[4.0, 3.2]} />
-          <meshStandardMaterial color="#353f33" roughness={0.85} />
+          <meshStandardMaterial color="#495745" roughness={0.8} />
         </mesh>
         {/* Passage Sconce */}
-        <pointLight position={[14.5, 2.4, -17.5]} color="#b8e2f2" intensity={1.2} distance={4.5} />
+        <pointLight position={[14.5, 2.4, -17.5]} color="#cbe3f5" intensity={1.8} distance={6.5} decay={1.3} />
 
         {/* DOOR 3: Door to Conservatory */}
         <Door 
@@ -134,7 +134,7 @@ export const Corridors: React.FC = () => {
         {/* Floor: Polished Italian Marble */}
         <mesh position={[4.75, 0, -26.0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[7.5, 2.4]} />
-          <meshStandardMaterial color="#f7f4ee" roughness={0.3} metalness={0.1} />
+          <meshStandardMaterial color="#faf6f0" roughness={0.25} metalness={0.1} />
         </mesh>
         {/* Rose Petals scattered down corridor */}
         {Array.from({ length: 30 }).map((_, i) => {
@@ -150,21 +150,21 @@ export const Corridors: React.FC = () => {
         {/* Ceiling */}
         <mesh position={[4.75, 3.6, -26.0]} rotation={[Math.PI / 2, 0, 0]}>
           <planeGeometry args={[7.5, 2.4]} />
-          <meshStandardMaterial color="#fcf8f2" roughness={0.9} />
+          <meshStandardMaterial color="#fffdfa" roughness={0.9} />
         </mesh>
         {/* North Wall */}
         <mesh position={[4.75, 1.8, -27.2]} receiveShadow>
           <planeGeometry args={[7.5, 3.6]} />
-          <meshStandardMaterial color="#d4c2be" roughness={0.75} />
+          <meshStandardMaterial color="#fff8f2" roughness={0.7} />
         </mesh>
         {/* South Wall */}
         <mesh position={[4.75, 1.8, -24.8]} rotation={[0, Math.PI, 0]} receiveShadow>
           <planeGeometry args={[7.5, 3.6]} />
-          <meshStandardMaterial color="#d4c2be" roughness={0.75} />
+          <meshStandardMaterial color="#fff8f2" roughness={0.7} />
         </mesh>
         {/* Warm Petal Corridor Sconces */}
-        <pointLight position={[3.0, 2.4, -26.0]} color="#ffd6e0" intensity={1.5} distance={5} />
-        <pointLight position={[6.5, 2.4, -26.0]} color="#ffd6e0" intensity={1.5} distance={5} />
+        <pointLight position={[3.0, 2.4, -26.0]} color="#ffd6e4" intensity={2.0} distance={7} decay={1.3} />
+        <pointLight position={[6.5, 2.4, -26.0]} color="#ffd6e4" intensity={2.0} distance={7} decay={1.3} />
 
         {/* DOOR 4: Grand Double Doors to Sanctuary */}
         <Door 

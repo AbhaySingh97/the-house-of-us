@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';
 import { HouseScene } from './components/canvas/HouseScene';
 import { MainMenu } from './components/ui/MainMenu';
@@ -8,11 +9,13 @@ import { LetterModal } from './components/ui/LetterModal';
 import { MemoryPuzzleModal } from './components/ui/puzzles/MemoryPuzzleModal';
 import { LibraryPuzzleModal } from './components/ui/puzzles/LibraryPuzzleModal';
 import { FinalPuzzleModal } from './components/ui/puzzles/FinalPuzzleModal';
+import { HintModal } from './components/ui/HintModal';
 import { PauseMenu } from './components/ui/PauseMenu';
 import { FinalRevealScreen } from './components/ui/FinalRevealScreen';
-import { gameStore } from './state/gameStore';
+import { gameStore, useGameStore } from './state/gameStore';
 
 export const App: React.FC = () => {
+  const { settings } = useGameStore();
   // Auto-detect mobile touch environment
   useEffect(() => {
     const enableTouch = () => {
@@ -39,10 +42,16 @@ export const App: React.FC = () => {
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden bg-[#0d070a]">
-      {/* 3D Scene Viewport with mobile DPR cap */}
+      {/* 3D Scene Viewport with adaptive performance & tone mapping */}
       <Canvas
-        shadows
-        dpr={[1, Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 1.75)]}
+        shadows={settings.quality !== 'low'}
+        dpr={
+          settings.quality === 'low'
+            ? [1, 1.0]
+            : settings.quality === 'medium'
+            ? [1, 1.25]
+            : [1, Math.min(typeof window !== 'undefined' ? window.devicePixelRatio : 1, 1.75)]
+        }
         camera={{
           fov: 72,
           near: 0.1,
@@ -51,7 +60,9 @@ export const App: React.FC = () => {
         }}
         gl={{
           antialias: true,
-          powerPreference: 'high-performance'
+          powerPreference: 'high-performance',
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.18
         }}
         className="w-full h-full"
       >
@@ -79,6 +90,9 @@ export const App: React.FC = () => {
 
       {/* Chapter 5: Final Sanctuary Puzzle */}
       <FinalPuzzleModal />
+
+      {/* 3-Tier Progressive Hint Modal */}
+      <HintModal />
 
       {/* Pause Menu */}
       <PauseMenu />

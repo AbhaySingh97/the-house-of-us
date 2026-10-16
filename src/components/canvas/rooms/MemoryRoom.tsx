@@ -6,75 +6,75 @@ import { Candle } from '../furniture/Candle';
 export const MemoryRoom: React.FC = () => {
   return (
     <group position={[0, 0, -10.5]}>
-      {/* --- FLOOR (Dark walnut parquet) --- */}
+      {/* --- FLOOR (Warm honey chestnut parquet) --- */}
       <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[9.0, 9.0]} />
-        <meshStandardMaterial color="#301c11" roughness={0.65} metalness={0.1} />
+        <meshStandardMaterial color="#825435" roughness={0.55} metalness={0.08} />
       </mesh>
 
       {/* Large Warm Crimson Persian Rug with Inset Damask Border */}
       <group position={[0, 0.005, 0]}>
         <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[5.6, 5.6]} />
-          <meshStandardMaterial color="#591420" roughness={0.8} />
+          <meshStandardMaterial color="#781827" roughness={0.75} />
         </mesh>
         {/* Inner Gold Medallion */}
         <mesh position={[0, 0.001, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <circleGeometry args={[1.2, 24]} />
-          <meshStandardMaterial color="#802130" roughness={0.85} />
+          <meshStandardMaterial color="#942637" roughness={0.8} />
         </mesh>
       </group>
 
       {/* --- COFFERED WOODEN CEILING BEAMS --- */}
       <mesh position={[0, 3.2, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <planeGeometry args={[9.0, 9.0]} />
-        <meshStandardMaterial color="#ece5dc" roughness={0.9} />
+        <meshStandardMaterial color="#fffdfa" roughness={0.9} />
       </mesh>
-      {/* Transverse and longitudinal dark walnut beams */}
+      {/* Transverse and longitudinal warm chestnut beams */}
       {[-2.25, 0, 2.25].map((bx) => (
         <mesh key={`bx_${bx}`} position={[bx, 3.14, 0]}>
           <boxGeometry args={[0.16, 0.12, 9.0]} />
-          <meshStandardMaterial color="#2d170e" roughness={0.7} />
+          <meshStandardMaterial color="#5c3821" roughness={0.65} />
         </mesh>
       ))}
       {[-2.25, 0, 2.25].map((bz) => (
         <mesh key={`bz_${bz}`} position={[0, 3.14, bz]}>
           <boxGeometry args={[9.0, 0.12, 0.16]} />
-          <meshStandardMaterial color="#2d170e" roughness={0.7} />
+          <meshStandardMaterial color="#5c3821" roughness={0.65} />
         </mesh>
       ))}
 
-      {/* --- WALLS (Muted Taupe Plaster with Deep Burgundy Wainscoting) --- */}
+      {/* --- WALLS (Warm Soft Cream Plaster with Rich Rose-Burgundy Wainscoting) --- */}
       {/* South Wall (Entrance from Corridor 1 at center X: [-0.8, 0.8]) */}
       <mesh position={[-2.65, 1.6, 4.5]} receiveShadow>
         <planeGeometry args={[3.7, 3.2]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
       <mesh position={[-2.65, 0.55, 4.48]}>
         <planeGeometry args={[3.7, 1.1]} />
-        <meshStandardMaterial color="#42141c" roughness={0.7} />
+        <meshStandardMaterial color="#6b212f" roughness={0.6} />
       </mesh>
       <mesh position={[2.65, 1.6, 4.5]} receiveShadow>
         <planeGeometry args={[3.7, 3.2]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
       <mesh position={[2.65, 0.55, 4.48]}>
         <planeGeometry args={[3.7, 1.1]} />
-        <meshStandardMaterial color="#42141c" roughness={0.7} />
+        <meshStandardMaterial color="#6b212f" roughness={0.6} />
       </mesh>
       <mesh position={[0, 2.9, 4.5]} receiveShadow>
         <planeGeometry args={[1.6, 0.6]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
 
       {/* North Wall (Solid wall with fireplace) */}
       <mesh position={[0, 1.6, -4.5]} receiveShadow>
         <planeGeometry args={[9.0, 3.2]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
       <mesh position={[0, 0.55, -4.48]}>
         <planeGeometry args={[9.0, 1.1]} />
-        <meshStandardMaterial color="#42141c" roughness={0.7} />
+        <meshStandardMaterial color="#6b212f" roughness={0.6} />
       </mesh>
       {/* Stone Fireplace */}
       <Fireplace position={[0, 0, -4.15]} />
@@ -82,58 +82,58 @@ export const MemoryRoom: React.FC = () => {
       {/* West Wall (Rainy Window wall with velvet drapes) */}
       <mesh position={[-4.5, 1.6, 0]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[9.0, 3.2]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
       <mesh position={[-4.48, 0.55, 0]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[9.0, 1.1]} />
-        <meshStandardMaterial color="#42141c" roughness={0.7} />
+        <meshStandardMaterial color="#6b212f" roughness={0.6} />
       </mesh>
 
       {/* Arch French Window with view of dark starry rain */}
       <group position={[-4.46, 1.8, 0]} rotation={[0, Math.PI / 2, 0]}>
-        {/* Dark Walnut Window Frame */}
+        {/* Warm Chestnut Window Frame */}
         <mesh>
           <boxGeometry args={[2.5, 1.9, 0.08]} />
-          <meshStandardMaterial color="#2d170e" roughness={0.65} />
+          <meshStandardMaterial color="#5c3821" roughness={0.6} />
         </mesh>
         {/* Glass panes with soft reflective wet sheen */}
         <mesh position={[0, 0, 0.02]}>
           <planeGeometry args={[2.3, 1.7]} />
-          <meshStandardMaterial color="#0c1524" roughness={0.15} metalness={0.85} />
+          <meshStandardMaterial color="#101d2d" roughness={0.15} metalness={0.8} />
         </mesh>
         {/* Burgundy Velvet Curtains flanking window */}
         <mesh position={[-1.3, 0, 0.08]} rotation={[0, 0.2, 0]} castShadow>
           <boxGeometry args={[0.35, 2.1, 0.12]} />
-          <meshStandardMaterial color="#55121e" roughness={0.85} />
+          <meshStandardMaterial color="#801c29" roughness={0.75} />
         </mesh>
         <mesh position={[1.3, 0, 0.08]} rotation={[0, -0.2, 0]} castShadow>
           <boxGeometry args={[0.35, 2.1, 0.12]} />
-          <meshStandardMaterial color="#55121e" roughness={0.85} />
+          <meshStandardMaterial color="#801c29" roughness={0.75} />
         </mesh>
         {/* Soft cool outdoor moonlight glow through glass */}
-        <pointLight position={[0, 0, 0.3]} color="#7faedb" intensity={0.9} distance={5} />
+        <pointLight position={[0, 0, 0.3]} color="#8cb8e6" intensity={1.2} distance={6} decay={1.3} />
       </group>
 
       {/* East Wall (Doorway to Corridor 2 at Z: [-0.8, 0.8]) */}
       <mesh position={[4.5, 1.6, -2.65]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[3.7, 3.2]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
       <mesh position={[4.48, 0.55, -2.65]} rotation={[0, -Math.PI / 2, 0]}>
         <planeGeometry args={[3.7, 1.1]} />
-        <meshStandardMaterial color="#42141c" roughness={0.7} />
+        <meshStandardMaterial color="#6b212f" roughness={0.6} />
       </mesh>
       <mesh position={[4.5, 1.6, 2.65]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[3.7, 3.2]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
       <mesh position={[4.48, 0.55, 2.65]} rotation={[0, -Math.PI / 2, 0]}>
         <planeGeometry args={[3.7, 1.1]} />
-        <meshStandardMaterial color="#42141c" roughness={0.7} />
+        <meshStandardMaterial color="#6b212f" roughness={0.6} />
       </mesh>
       <mesh position={[4.5, 2.9, 0]} rotation={[0, -Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[1.6, 0.6]} />
-        <meshStandardMaterial color="#c7baa9" roughness={0.85} />
+        <meshStandardMaterial color="#f7f0e6" roughness={0.8} />
       </mesh>
 
       {/* Writing Desk with Chapter I Letter & Keepsake Box */}
@@ -195,7 +195,7 @@ export const MemoryRoom: React.FC = () => {
           <torusGeometry args={[0.5, 0.025, 8, 24]} />
           <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.2} />
         </mesh>
-        <pointLight color="#ffe0b2" intensity={1.8} distance={8} decay={2} castShadow />
+        <pointLight color="#ffe4b8" intensity={2.6} distance={13} decay={1.3} />
       </group>
     </group>
   );

@@ -117,30 +117,42 @@ export const GardenFountain: React.FC<{ center: [number, number, number] }> = ({
         {/* Carved stone bench seat */}
         <mesh position={[0, 0.45, 0]} castShadow receiveShadow>
           <boxGeometry args={[1.3, 0.08, 0.45]} />
-          <meshStandardMaterial color="#4a4f49" roughness={0.8} />
+          <meshStandardMaterial color="#5a6358" roughness={0.7} />
         </mesh>
         {/* Bench legs */}
         {[-0.5, 0.5].map((bx, i) => (
           <mesh key={i} position={[bx, 0.22, 0]} castShadow receiveShadow>
             <boxGeometry args={[0.12, 0.44, 0.38]} />
-            <meshStandardMaterial color="#4a4f49" roughness={0.8} />
+            <meshStandardMaterial color="#5a6358" roughness={0.7} />
           </mesh>
         ))}
-        {/* Letter resting on bench */}
-        <group position={[0, 0.5, 0]} rotation={[-Math.PI / 2, 0, 0.1]}>
+        {/* Letter resting on bench (Folded 3D Parchment with Red Wax Seal) */}
+        <group position={[0, 0.505, 0]} rotation={[-Math.PI / 2, 0, 0.1]}>
           <mesh castShadow receiveShadow>
-            <planeGeometry args={[0.32, 0.24]} />
-            <meshStandardMaterial color="#fcf5e5" roughness={0.85} />
+            <boxGeometry args={[0.34, 0.26, 0.012]} />
+            <meshStandardMaterial color="#fdf8ec" roughness={0.7} />
           </mesh>
           {[-0.06, -0.02, 0.02, 0.06].map((y, idx) => (
-            <mesh key={idx} position={[0, y, 0.001]}>
+            <mesh key={idx} position={[0, y, 0.008]}>
               <planeGeometry args={[0.24 - (idx % 2) * 0.04, 0.005]} />
               <meshBasicMaterial color="#2d1c25" />
             </mesh>
           ))}
-          <mesh position={[0, 0, 0.002]}>
-            <ringGeometry args={[0.18, 0.2, 24]} />
-            <meshBasicMaterial color="#ffc566" transparent opacity={0.4} />
+          {/* Crimson Red Wax Seal */}
+          <group position={[0.1, -0.08, 0.012]}>
+            <mesh castShadow>
+              <cylinderGeometry args={[0.032, 0.035, 0.01, 16]} />
+              <meshStandardMaterial color="#9e1828" roughness={0.4} metalness={0.1} />
+            </mesh>
+            <mesh position={[0, 0.006, 0]}>
+              <torusGeometry args={[0.024, 0.004, 8, 16]} />
+              <meshStandardMaterial color="#7a0e1c" roughness={0.5} />
+            </mesh>
+          </group>
+          {/* Glowing Beacon Ring */}
+          <mesh position={[0, 0, 0.009]}>
+            <ringGeometry args={[0.19, 0.22, 32]} />
+            <meshBasicMaterial color="#ffc566" transparent opacity={0.45} />
           </mesh>
         </group>
       </group>
@@ -155,12 +167,12 @@ export const GardenFountain: React.FC<{ center: [number, number, number] }> = ({
             {/* Stone Pillar Base */}
             <mesh position={[0, 0.5, 0]} castShadow receiveShadow>
               <cylinderGeometry args={[0.18, 0.24, 1.0, 12]} />
-              <meshStandardMaterial color="#353b34" roughness={0.85} />
+              <meshStandardMaterial color="#50594e" roughness={0.75} />
             </mesh>
             {/* Ornate Capital */}
             <mesh position={[0, 1.05, 0]} castShadow receiveShadow>
               <boxGeometry args={[0.38, 0.1, 0.38]} />
-              <meshStandardMaterial color="#2d332c" roughness={0.8} />
+              <meshStandardMaterial color="#424b40" roughness={0.75} />
             </mesh>
 
             {/* Brass Lantern Cage */}
@@ -168,28 +180,27 @@ export const GardenFountain: React.FC<{ center: [number, number, number] }> = ({
               <mesh castShadow>
                 <boxGeometry args={[0.26, 0.32, 0.26]} />
                 <meshStandardMaterial 
-                  color={isLit ? lantern.color : '#1a1f1a'} 
+                  color={isLit ? lantern.color : '#253023'} 
                   emissive={isLit ? lantern.color : '#000000'}
-                  emissiveIntensity={isLit ? 1.6 : 0}
-                  roughness={0.3} 
+                  emissiveIntensity={isLit ? 1.8 : 0}
+                  roughness={0.25} 
                   transparent 
-                  opacity={0.85} 
+                  opacity={0.88} 
                 />
               </mesh>
               {/* Top hood */}
               <mesh position={[0, 0.22, 0]} castShadow>
                 <coneGeometry args={[0.2, 0.16, 4]} />
-                <meshStandardMaterial color="#c59b27" metalness={0.85} roughness={0.3} />
+                <meshStandardMaterial color="#d4af37" metalness={0.9} roughness={0.25} />
               </mesh>
 
-              {/* Glowing point light if lit */}
+              {/* Glowing point light if lit - Optimized without heavy shadows */}
               {isLit && (
                 <pointLight 
                   color={lantern.color} 
                   intensity={2.8} 
-                  distance={6.0} 
-                  decay={2} 
-                  castShadow 
+                  distance={7.5} 
+                  decay={1.3} 
                 />
               )}
             </group>

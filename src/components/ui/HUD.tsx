@@ -1,50 +1,26 @@
 import React from 'react';
-import { useGameStore, gameStore } from '../../state/gameStore';
+import { useGameStore, gameStore, getActionableObjective } from '../../state/gameStore';
 import { getRoomDisplayName } from '../../utils/collision';
-import { Pause, Key, Compass } from 'lucide-react';
+import { Pause, Key, Compass, Lightbulb } from 'lucide-react';
 
 import { inputStore } from '../../state/inputStore';
 
 export const HUD: React.FC = () => {
+  const state = useGameStore();
   const { 
     phase, 
     currentRoom, 
     prompt, 
     inventory, 
     toastMessage, 
-    flags, 
     activeModal, 
     settings 
-  } = useGameStore();
+  } = state;
 
   if (phase !== 'PLAYING') return null;
 
-  // Determine current quest objective
-  let currentObjective = "Explore the Entrance Hall and read the welcome note.";
-  if (flags.finalPuzzleSolved) {
-    currentObjective = "The Sanctuary is unlocked! Open the Celestial Chest.";
-  } else if (flags.door4Unlocked) {
-    currentObjective = "The Grand Double Doors are open. Step into the Sanctuary of Us.";
-  } else if (flags.hasReadGardenLetter) {
-    currentObjective = `Kindle the 4 Conservatory Lanterns in order (${flags.litLanterns.length}/4).`;
-  } else if (flags.door3Unlocked) {
-    currentObjective = "Enter the Conservatory of Seasons.";
-  } else if (flags.libraryPuzzleSolved) {
-    currentObjective = "Use the Verdant Key to unlock the Conservatory Door.";
-  } else if (flags.hasReadLibraryLetter) {
-    currentObjective = "Find the 3 book chapter numbers and unlock the secret desk compartment.";
-  } else if (flags.door2Unlocked) {
-    currentObjective = "Enter the Secret Library.";
-  } else if (flags.memoryPuzzleSolved) {
-    currentObjective = "Take the Silver Heart Key and unlock the Library Door.";
-  } else if (flags.hasReadMemoryLetter) {
-    currentObjective = "Align the 3 keepsakes in the velvet box using the letter's clue.";
-  } else if (flags.hasFoundHallwayKey) {
-    currentObjective = "Use the Ornate Brass Key to unlock the Memory Room Door.";
-  } else if (flags.hasReadWelcomeNote) {
-    currentObjective = "Search the console table for the hidden brass key.";
-  }
-
+  // Retrieve structured actionable objective & immediate next action
+  const obj = getActionableObjective(state);
   const roomName = getRoomDisplayName(currentRoom);
 
   const handlePromptTap = (e: React.MouseEvent | React.TouchEvent) => {
@@ -59,21 +35,40 @@ export const HUD: React.FC = () => {
     <div className="pointer-events-none fixed inset-0 z-30 flex flex-col justify-between p-3 sm:p-6 font-sans select-none">
       {/* --- TOP BAR --- */}
       <div className="flex items-start justify-between w-full">
-        {/* Room Title and Objective Banner */}
-        <div className="flex flex-col gap-1.5 flex-1 mr-3 max-w-[210px] sm:max-w-md">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-[#ffd700]/30 text-white shadow-lg w-fit">
+        {/* Room Title and Actionable Objective Card */}
+        <div className="flex flex-col gap-1.5 flex-1 mr-3 max-w-[260px] sm:max-w-md">
+          {/* Room Pill */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#ffd700]/30 text-white shadow-lg w-fit">
             <Compass size={13} className="text-[#ffd700]" />
             <span className="text-[11px] sm:text-xs font-serif tracking-wider font-semibold">
               {roomName}
             </span>
           </div>
 
-          {/* Current Objective */}
-          <div className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-[11px] sm:text-xs text-[#ebd8c5] shadow-sm leading-tight">
-            <span className="text-[9px] uppercase font-bold tracking-wider text-[#ffd700] block mb-0.5">
-              Goal
-            </span>
-            {currentObjective}
+          {/* Actionable Objective Card */}
+          <div className="p-2 sm:p-2.5 rounded-xl bg-black/70 backdrop-blur-md border border-[#ffd700]/25 text-[#ebd8c5] shadow-lg leading-tight">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[9px] uppercase font-bold tracking-wider text-[#ffd700]">
+                {obj.chapter}
+              </span>
+              <button
+                onClick={() => gameStore.openModal('HINTS')}
+                className="pointer-events-auto flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#ffd700]/20 hover:bg-[#ffd700]/35 text-[#ffd700] text-[10px] font-semibold transition-colors cursor-pointer"
+                title="Open 3-Tier Hints"
+              >
+                <Lightbulb size={11} />
+                <span>Hint</span>
+              </button>
+            </div>
+            {/* Clear Goal */}
+            <div className="text-[11px] sm:text-xs font-semibold text-[#fff6ed] leading-snug">
+              {obj.task}
+            </div>
+            {/* Immediate Next Action */}
+            <div className="mt-1 pt-1 border-t border-white/10 text-[10px] sm:text-[11px] text-[#e0cfbe] leading-tight">
+              <span className="text-[#d4af37] font-medium">Action: </span>
+              {obj.nextAction}
+            </div>
           </div>
         </div>
 
@@ -81,7 +76,7 @@ export const HUD: React.FC = () => {
         <div className="flex items-center gap-2 pointer-events-auto">
           {/* Inventory Pills */}
           {inventory.length > 0 && (
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-[#ffd700]/30 text-white shadow-lg">
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-[#ffd700]/30 text-white shadow-lg">
               <Key size={13} className="text-[#ffd700]" />
               <div className="flex items-center gap-1 text-xs">
                 {inventory.map(item => (
@@ -93,10 +88,20 @@ export const HUD: React.FC = () => {
             </div>
           )}
 
+          {/* Dedicated Hint Button for Quick Access */}
+          <button
+            onClick={() => gameStore.openModal('HINTS')}
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/75 hover:bg-black/95 active:bg-[#ffd700]/20 backdrop-blur-md border border-[#ffd700]/40 text-[#ffd700] shadow-xl flex items-center justify-center transition-all active:scale-90 cursor-pointer touch-none"
+            aria-label="Hints & Guidance"
+            title="Need a Hint?"
+          >
+            <Lightbulb size={17} />
+          </button>
+
           {/* Large Mobile-Friendly Pause Button */}
           <button
             onClick={() => gameStore.setPhase('PAUSED')}
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/70 hover:bg-black/90 active:bg-[#ffd700]/20 backdrop-blur-md border border-[#ffd700]/40 text-white shadow-xl flex items-center justify-center transition-all active:scale-90 cursor-pointer touch-none"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/75 hover:bg-black/95 active:bg-[#ffd700]/20 backdrop-blur-md border border-[#ffd700]/40 text-white shadow-xl flex items-center justify-center transition-all active:scale-90 cursor-pointer touch-none"
             aria-label="Pause Menu"
           >
             <Pause size={18} className="text-[#ffd700]" />

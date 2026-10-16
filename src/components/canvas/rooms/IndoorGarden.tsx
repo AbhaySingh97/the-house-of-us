@@ -16,23 +16,23 @@ export const IndoorGarden: React.FC = () => {
 
   return (
     <group position={[14.5, 0, -26.0]}>
-      {/* --- FLOOR (Natural mossy stone flagstones with damp sheen) --- */}
+      {/* --- FLOOR (Warm natural limestone flagstones with soft moss sheen) --- */}
       <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[12.0, 13.0]} />
-        <meshStandardMaterial color="#293026" roughness={0.75} metalness={0.2} />
+        <meshStandardMaterial color="#8a8274" roughness={0.65} metalness={0.1} />
       </mesh>
 
       {/* Decorative center circular stone roundel with moss trim */}
       <mesh position={[0, 0.005, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <circleGeometry args={[2.7, 32]} />
-        <meshStandardMaterial color="#353d32" roughness={0.8} />
+        <meshStandardMaterial color="#aba89f" roughness={0.7} />
       </mesh>
 
       {/* Flagstone Stepping Path to Grand Doors (West) */}
       {[-1.8, -2.6, -3.4, -4.2, -5.0].map((px, pi) => (
         <mesh key={pi} position={[px, 0.008, 0]} rotation={[-Math.PI / 2, 0, 0.1 * pi]} receiveShadow>
           <planeGeometry args={[0.7, 1.2]} />
-          <meshStandardMaterial color="#424c3d" roughness={0.85} />
+          <meshStandardMaterial color="#b5b2a7" roughness={0.75} />
         </mesh>
       ))}
 
@@ -42,18 +42,18 @@ export const IndoorGarden: React.FC = () => {
         {[-4.5, -2.25, 0, 2.25, 4.5].map((rx) => (
           <mesh key={rx} position={[rx, 0, 0]}>
             <boxGeometry args={[0.1, 0.16, 13.0]} />
-            <meshStandardMaterial color="#1a2418" metalness={0.7} roughness={0.4} />
+            <meshStandardMaterial color="#354533" metalness={0.7} roughness={0.4} />
           </mesh>
         ))}
         {/* Glass Skylight Panes */}
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <planeGeometry args={[12.0, 13.0]} />
           <meshStandardMaterial 
-            color="#8ec5dc" 
-            roughness={0.1} 
-            metalness={0.4} 
+            color="#d0eaf5" 
+            roughness={0.08} 
+            metalness={0.3} 
             transparent 
-            opacity={0.3} 
+            opacity={0.35} 
           />
         </mesh>
       </group>
@@ -64,7 +64,7 @@ export const IndoorGarden: React.FC = () => {
           <group key={`${i}_${j}`} position={[vx, 3.7, vz]}>
             <mesh position={[0, -0.4, 0]}>
               <cylinderGeometry args={[0.08, 0.2, 0.8, 6]} />
-              <meshStandardMaterial color="#2d5932" roughness={0.9} />
+              <meshStandardMaterial color="#2d6935" roughness={0.8} />
             </mesh>
             {/* Small hanging flower buds */}
             <mesh position={[0, -0.85, 0]}>
@@ -79,26 +79,26 @@ export const IndoorGarden: React.FC = () => {
       {/* South Wall (Entrance from Corridor 3 at center X: [-0.8, 0.8]) */}
       <mesh position={[-3.4, 1.8, 6.5]} receiveShadow>
         <planeGeometry args={[5.2, 3.6]} />
-        <meshStandardMaterial color="#2d382b" roughness={0.85} />
+        <meshStandardMaterial color="#495745" roughness={0.8} />
       </mesh>
       <mesh position={[3.4, 1.8, 6.5]} receiveShadow>
         <planeGeometry args={[5.2, 3.6]} />
-        <meshStandardMaterial color="#2d382b" roughness={0.85} />
+        <meshStandardMaterial color="#495745" roughness={0.8} />
       </mesh>
       <mesh position={[0, 3.2, 6.5]} receiveShadow>
         <planeGeometry args={[1.6, 0.8]} />
-        <meshStandardMaterial color="#2d382b" roughness={0.85} />
+        <meshStandardMaterial color="#495745" roughness={0.8} />
       </mesh>
 
       {/* North Wall: Grand Conservatory Glass Wall Overlooking Moonlit Rain */}
       <group position={[0, 1.8, -6.5]}>
         <mesh position={[0, -1.0, 0]}>
           <boxGeometry args={[12.0, 1.6, 0.2]} />
-          <meshStandardMaterial color="#222b20" roughness={0.85} />
+          <meshStandardMaterial color="#354533" roughness={0.8} />
         </mesh>
         <mesh position={[0, 0.5, 0]}>
           <planeGeometry args={[12.0, 2.0]} />
-          <meshStandardMaterial color="#0c1824" roughness={0.12} metalness={0.85} transparent opacity={0.75} />
+          <meshStandardMaterial color="#102030" roughness={0.12} metalness={0.8} transparent opacity={0.75} />
         </mesh>
       </group>
 
@@ -106,26 +106,26 @@ export const IndoorGarden: React.FC = () => {
       <group position={[6.0, 1.8, 0]} rotation={[0, -Math.PI / 2, 0]}>
         <mesh position={[0, -1.0, 0]}>
           <boxGeometry args={[13.0, 1.6, 0.2]} />
-          <meshStandardMaterial color="#222b20" roughness={0.85} />
+          <meshStandardMaterial color="#354533" roughness={0.8} />
         </mesh>
         <mesh position={[0, 0.5, 0]}>
           <planeGeometry args={[13.0, 2.0]} />
-          <meshStandardMaterial color="#0c1824" roughness={0.12} metalness={0.85} transparent opacity={0.75} />
+          <meshStandardMaterial color="#102030" roughness={0.12} metalness={0.8} transparent opacity={0.75} />
         </mesh>
       </group>
 
       {/* West Wall: Grand Double Doorway to Corridor 4 at center Z: [-1.3, 1.3] */}
       <mesh position={[-6.0, 1.8, -3.9]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[5.2, 3.6]} />
-        <meshStandardMaterial color="#2d382b" roughness={0.85} />
+        <meshStandardMaterial color="#495745" roughness={0.8} />
       </mesh>
       <mesh position={[-6.0, 1.8, 3.9]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[5.2, 3.6]} />
-        <meshStandardMaterial color="#2d382b" roughness={0.85} />
+        <meshStandardMaterial color="#495745" roughness={0.8} />
       </mesh>
       <mesh position={[-6.0, 3.2, 0]} rotation={[0, Math.PI / 2, 0]} receiveShadow>
         <planeGeometry args={[2.6, 0.8]} />
-        <meshStandardMaterial color="#2d382b" roughness={0.85} />
+        <meshStandardMaterial color="#495745" roughness={0.8} />
       </mesh>
 
       {/* --- LUSH BLOOMING ROSE BUSHES & PLANTERS --- */}
@@ -185,7 +185,7 @@ export const IndoorGarden: React.FC = () => {
       </group>
 
       {/* Atmospheric Moonlit Skylight Glow */}
-      <pointLight position={[0, 3.5, 0]} color="#b8e2f2" intensity={1.5} distance={13} decay={2} />
+      <pointLight position={[0, 3.5, 0]} color="#d6eef8" intensity={2.2} distance={15} decay={1.3} />
     </group>
   );
 };
